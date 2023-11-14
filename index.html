@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="assets/CSS/bootstrap.min.css" />
+  <link rel="stylesheet" href="assets/CSS/styles.css" />
+  <link href="assets/CSS/fontawesome.min.css" rel="stylesheet">
+  <link href="assets/CSS/brands.min.css" rel="stylesheet">
+  <link href="assets/CSS/solid.min.css" rel="stylesheet">
+  <title>MQTT Case Study</title>
+</head>
+
+<body class="mt-5 mb-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-2 d-lg-block d-none mb-3">
+        <img width="inherit" height="150px" class="border border-dark shadow-lg rounded-circle"
+          src="assets/images/avatar1.jpg" alt="">
+      </div>
+      <div class="col-md-8 col-sm-12 ml-3">
+        <div class="badge  border rounded-pill text-bg-light pt-0 pb-0 ">
+          <h4><strong>Beemnet Workeneh</strong></h4>
+        </div>
+        <br>
+        <div class="mt-1 badge border rounded-pill text-bg-light pt-0 pb-0 ">
+          <h5>Software Engineer</h5>
+        </div>
+        <br>
+        <div class="mt-1 badge border rounded-pill text-bg-light pt-0 pb-0 ">
+          <a href="tel:206-355-0608"><i class="text-dark fa fa-2x  fa-mobile"></i></a>
+        </div>
+        <div class="mt-1 badge  border rounded-pill text-bg-light pt-0 pb-0 ">
+          <a href="mailto:beemnet17@gmail.com"><i class=" text-dark fa-solid fa-2x fa-envelope"></i></a>
+        </div>
+        <div class="mt-1 badge  border rounded-pill text-bg-light pt-0 pb-0 ">
+          <a href="https://www.linkedin.com/in/beemnet-workeneh-25b579b3/" target="_blank"><i
+              class="text-dark fa-brands fa-2x fa-linkedin"></i></a>
+        </div>
+        <br>
+        <div class="mt-1 badge  border rounded-pill text-bg-light pt-0 pb-0 ">
+          <a style="text-decoration: none;" target="_blank" href="https://beemnet17.wixsite.com/beemnetworkeneh">
+            <h6 class="text-dark"> Portfolio <h6>
+          </a>
+        </div>
+        <br>
+      </div>
+    </div>
+    <div class="row mt-2" style="width: 800px; margin: auto; padding-bottom: 5px">
+      <h1>MQTT Case Study</h1>
+      <p>
+        MQTT, short for Message Queuing Telemetry Transport, is a lightweight messaging protocol that's ideal for the
+        Internet of Things (IoT). Designed for connections with remote locations where a small code footprint is
+        essential and network bandwidth is at a premium, MQTT operates on a publish/subscribe model, making it highly
+        scalable and efficient for real-time data distribution. Its simplicity and ease of implementation have made it a
+        popular choice for a wide range of IoT applications, from home automation to industrial control systems.
+      </p>
+      <p>The following are some of the main components of MQTT</p>
+      <ul>
+        <li>
+          <p><strong>Broker</strong>: The central server that manages message distribution, ensuring messages reach the
+            correct subscribers.</p>
+        </li>
+        <li>
+          <p><strong>Publisher</strong>: The client that sends messages to the broker, assigning them to specific
+            topics.</p>
+        </li>
+        <li>
+          <p><strong>Subscriber</strong>: The client that receives messages from the broker by subscribing to specific
+            topics it's interested in.</p>
+        </li>
+        <li>
+          <p><strong>Topic</strong>: A string that the broker uses to filter messages and distribute them to
+            subscribers.</p>
+        </li>
+      </ul>
+
+      <p>For this case study we're going to consider remote monitoring of heavy machinery through IQTT.</p>
+      <ul>
+        <li>
+          Broker: A free cloud based broker with url 'ws://broker.emqx.io:8083/mqtt'
+        </li>
+        <li>
+          Publisher: A big truck equipped with IoT device able to publish to our broker
+        </li>
+        <li>
+          Subscriber: A remote monitoring station simulated by the popup window (once you click start)
+        </li>
+      </ul>
+      <p> Once you click "Start" the big truck is ready to start publishing and the Gas Pedal button becomes active.
+        When you hover over the button the truck will
+        accelerate, when you drag the mouse away from the button the truck will decelerate.T he truck
+        will be publishing its speed, fuel level, and distance traveled to the broker, and the popup window will be
+        recieving those
+        values from the broker. When you click "Stop" the truck stops publishing and the speed, fuel, and distance values will be reset.
+      </p>
+      <button id="start" class="btn btn-outline-primary">
+        Start
+      </button>
+    </div>
+    <div class="interaction-container">
+      <div class="row">
+        <div class="col-8" id="iot-container" style="padding-right: 0">
+          <span id="speed-readout"></span>
+          <br />
+          <span id="fuel-readout"></span>
+          <br />
+          <span id="distance-readout"></span>
+          <div class="road"></div>
+
+          <div class="big-truck-container">
+            <img src="assets/images/truck-body.png" alt="Truck Body" class="truck-body" />
+            <img src="assets/images/wheel.png" alt="Front Wheel" class="wheel front-wheel" />
+            <img src="assets/images/wheel.png" alt="Rear Wheel" class="wheel rear-wheel" />
+          </div>
+        </div>
+        <div class="col-4" style="padding-left: 0">
+          <button type="button" id="pedal" class="pedal btn btn-outline-primary" disabled>
+            Gas Pedal
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/JS/bootstrap.bundle.min.js"></script>
+  <script src="assets/JS/mqtt.min.js"></script>
+  <script src="assets/JS/index.js"></script>
+</body>
+
+</html>
