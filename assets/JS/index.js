@@ -88,6 +88,7 @@ displayDistance(distance)
 
 const startButton = document.getElementById('start')
 const pedal = document.getElementById('pedal')
+const blinker = document.getElementById("blinker")
 let popup = null;
 
 let pedalIntervalId;
@@ -95,9 +96,12 @@ let publishingIntervalId;
 let dt = 200
 let a = 0.15
 
+
 startButton.addEventListener('click', () => { 
     clearInterval(publishingIntervalId)
     if(startButton.textContent.trim() === "Start"){
+        blinker.classList.add("blinking")
+        blinker.classList.remove("hidden")
         pedal.disabled = false
         startButton.textContent = "Stop"
         let params = `scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,
@@ -117,6 +121,8 @@ startButton.addEventListener('click', () => {
             )
         }, dt)
     } else {
+        blinker.classList.remove("blinking")
+        blinker.classList.add("hidden")
         setWheelSpinSpeed(0);
         fuel = fullTank;
         distance = 0;
@@ -133,6 +139,8 @@ startButton.addEventListener('click', () => {
 let popupChecker = setInterval(function() { 
     if(popup && popup.closed) {
         // clearInterval(popupChecker);
+        blinker.classList.remove("blinking")
+        blinker.classList.add("hidden")
         clearInterval(publishingIntervalId)
         setWheelSpinSpeed(0);
         fuel = fullTank;

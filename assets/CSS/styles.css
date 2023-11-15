@@ -62,8 +62,38 @@
 }
 
 
-#speed-readout, #fuel-readout, #distance-readout {
+#speed-readout,
+#fuel-readout,
+#distance-readout {
     float: right;
     padding-right: 5px;
 }
 
+.hidden {
+    visibility: hidden;
+}
+
+.blinker {
+    position: absolute;
+    left: 250px;
+    top: -30px;
+}
+
+
+
+
+
+.blinking {
+      animation: blink 2s steps(5, start) infinite;
+      -webkit-animation: blink 1s steps(5, start) infinite;
+    }
+    @keyframes blink {
+      to {
+        visibility: hidden;
+      }
+    }
+    @-webkit-keyframes blink {
+      to {
+        visibility: hidden;
+      }
+    }
