@@ -3,14 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/CSS/bootstrap.min.css">
     <title>Remote Monitoring Station</title>
 </head>
 <body>
-    <h1>Remote Monitoring Station</h1>
+    <nav class="navbar bg-primary" data-bs-theme="dark">
+        <div class="container-fluid">
+          <span class="navbar-brand mb-0 h1">Remote Monitoring Station Dashboard</span>
+        </div>
+      </nav>
     <div id="content"></div>
-    
+    <div id="speed-chart"></div>
+    <div id="fuel-chart"></div>
+    <div id="distance-chart"></div>
     <script src="assets/JS/mqtt.min.js"></script>
     <script src="assets/JS/bootstrap.bundle.min.js"></script>
+    <script src="assets/JS/apexcharts.js"></script>
     <script src="assets/JS/popup.js"></script>
 </body>
 </html>

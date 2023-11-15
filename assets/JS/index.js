@@ -101,7 +101,7 @@ startButton.addEventListener('click', () => {
         pedal.disabled = false
         startButton.textContent = "Stop"
         let params = `scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,
-                    width=600,height=300`
+                    width=600,height=800`
     
         popup = window.open(`popup.html?topic=${myTopic}&url=${url}`,'popup', params)
         publishingIntervalId = setInterval(()=>{
@@ -112,9 +112,7 @@ startButton.addEventListener('click', () => {
                 function (error) {
                     if (error) {
                         console.log(error)
-                    } else {
-                        console.log('Published')
-                    }
+                    } 
                 }
             )
         }, dt)
@@ -131,6 +129,24 @@ startButton.addEventListener('click', () => {
     }
 
 })
+
+let popupChecker = setInterval(function() { 
+    if(popup && popup.closed) {
+        // clearInterval(popupChecker);
+        clearInterval(publishingIntervalId)
+        setWheelSpinSpeed(0);
+        fuel = fullTank;
+        distance = 0;
+        displayDistance(distance)
+        displaySpeed(speed)
+        displayFuel(fuel)
+        pedal.disabled = true
+        startButton.textContent = "Start"
+        popup = null;
+    }
+}, dt);
+
+
 
 pedal.addEventListener('mouseover', function () {
     // Clear any existing intervals to avoid multiple overlapping intervals
