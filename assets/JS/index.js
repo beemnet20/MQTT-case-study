@@ -5,7 +5,7 @@ const uuid = () => {
     return uuid.substr(uuid.lastIndexOf('/') + 1)
 }
 
-const url = 'wss://broker.emqx.io:8083/mqtt'
+const url = 'wss://broker.emqx.io:8084/mqtt'
 
 const bigTruckOptions = {
     // Clean session
