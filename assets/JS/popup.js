@@ -120,9 +120,9 @@ remoteMonitorClient.on('message', function (topic, payload, packet) {
 
     display.innerHTML = `
     <div class="row text-center m-2">
-        <div class="col-3 card m-1">Speed = ${transmittedData.speed} MPH </div>
-        <div class="col-4 card m-1">Fuel = ${parseFloat(transmittedData.fuel).toFixed(2)} gallons</div>
-        <div class="col-4 card m-1">Distance = ${parseFloat(transmittedData.distance).toFixed(
+        <div class="col-3 card m-1 text-primary">Speed = ${transmittedData.speed} mph</div>
+        <div class="col-4 card m-1 text-primary">Fuel = ${parseFloat(transmittedData.fuel).toFixed(2)} gallons</div>
+        <div class="col-4 card m-1 text-primary">Distance = ${parseFloat(transmittedData.distance).toFixed(
             2
         )} miles</div>
     </div>
