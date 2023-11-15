@@ -5,7 +5,7 @@ const uuid = () => {
     return uuid.substr(uuid.lastIndexOf('/') + 1)
 }
 
-const url = 'wss://broker.emqx.io:8084/mqtt'
+const url = window.location.protocol === 'file:'? 'ws://broker.emqx.io:8083/mqtt' : 'wss://broker.emqx.io:8084'
 
 const bigTruckOptions = {
     // Clean session
@@ -96,10 +96,8 @@ let dt = 200
 let a = 0.15
 
 startButton.addEventListener('click', () => { 
-
     clearInterval(publishingIntervalId)
-
-    if(startButton.textContent === "Start"){
+    if(startButton.textContent.trim() === "Start"){
         pedal.disabled = false
         startButton.textContent = "Stop"
         let params = `scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,
